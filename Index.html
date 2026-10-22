@@ -3,113 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saúde para Todos - Encontre Cuidados Próximos de Você</title>
-    
-    <!-- Google Fonts & Tailwind CSS -->
+    <title>Saúde para Todos</title>
+    <meta name="description" content="Sistema de localização e triagem de saúde para encontrar serviços próximos de você.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            200: '#bae0fd',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            700: '#075985',
-                            800: '#0c4a6e',
-                            900: '#0f3750',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .custom-glass {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="Index.css.">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
-
-    <!-- Header & Navbar -->
-    <header class="sticky top-0 z-50 custom-glass border-b border-brand-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="bg-gradient-to-tr from-brand-600 to-cyan-500 text-white p-3 rounded-2xl shadow-md shadow-brand-500/20">
-                    <i class="fa-solid fa-heart-pulse text-2xl animate-pulse"></i>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand-wrap">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
                 </div>
                 <div>
-                    <h1 class="font-extrabold text-2xl tracking-tight text-brand-900 leading-none">Saúde <span class="text-brand-500">para Todos</span></h1>
-                    <p class="text-xs text-brand-600 font-medium tracking-wide">SISTEMA UNIFICADO DE LOCALIZAÇÃO</p>
+                    <h1>Saúde <span>para Todos</span></h1>
+                    <p>Sistema Unificado de Localização</p>
                 </div>
             </div>
 
-            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-600">
-                <a href="#unidades" class="hover:text-brand-600 transition">Unidades de Saúde</a>
-                <a href="#triagem" class="hover:text-brand-600 transition">Triagem de Sintomas</a>
-                <a href="#emergencias" class="hover:text-brand-600 transition">Emergências</a>
+            <nav class="menu-desktop">
+                <a href="#unidades">Unidades</a>
+                <a href="#triagem">Triagem</a>
+                <a href="#emergencias">Emergências</a>
             </nav>
 
-            <a href="#emergencias" class="bg-red-500 hover:bg-red-600 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-full shadow-lg shadow-red-500/30 transition duration-300 flex items-center gap-2">
-                <i class="fa-solid fa-phone-volume animate-bounce"></i>
+            <a href="#emergencias" class="emergency-btn">
+                <i class="fa-solid fa-phone-volume"></i>
                 <span>Emergência 192</span>
             </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative bg-gradient-to-b from-brand-50 via-white to-slate-50 pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-brand-100">
-        <div class="max-w-5xl mx-auto text-center space-y-6">
-            <span class="inline-flex items-center gap-2 bg-brand-100 text-brand-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                <i class="fa-solid fa-location-dot"></i> Geolocalização Ativa
-            </span>
-            <h2 class="text-4xl sm:text-5xl font-extrabold text-brand-900 tracking-tight leading-tight">
-                Cuidados de saúde com rapidez e proximidade.
-            </h2>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-                Encontre hospitais, UPAs, postos de saúde e farmácias comunitárias em tempo real. Ative seu GPS para rotas e distâncias exatas.
-            </p>
+    <main>
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-copy">
+                    <span class="eyebrow">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Geolocalização ativa
+                    </span>
+                    <h2>Cuidados de saúde com rapidez, confiança e proximidade.</h2>
+                    <p>
+                        Encontre hospitais, UPAs, postos de saúde e serviços comunitários em tempo real.
+                        Tenha acesso rápido às unidades mais próximas e orientações importantes para a sua situação.
+                    </p>
 
-            <!-- Location Status Banner -->
-            <div id="geo-status" class="inline-flex items-center gap-3 bg-white border border-brand-200 text-brand-800 px-5 py-3 rounded-2xl shadow-sm text-sm font-medium">
-                <i class="fa-solid fa-satellite-dish text-brand-500 text-lg"></i>
-                <span id="geo-text">Clique no botão para detectar sua localização exata e atualizar distâncias.</span>
-                <button onclick="getUserLocation()" class="ml-2 bg-brand-500 hover:bg-brand-600 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition shadow-sm">
-                    Usar Meu GPS
-                </button>
-            </div>
-        </div>
-    </section>
+                    <div class="hero-actions">
+                        <a href="#unidades" class="btn-primary">Ver unidades</a>
+                        <a href="#triagem" class="btn-secondary">Triagem rápida</a>
+                    </div>
 
-    <!-- Main Content Area -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 flex-grow">
-
-        <!-- Search & Filter Section -->
-        <section id="unidades" class="space-y-6">
-            <div class="flex flex-col md:flex-row gap-4 justify-between items-center bg-white p-4 sm:p-6 rounded-3xl border border-slate-100 shadow-lg shadow-slate-200/50">
-                <!-- Search Input -->
-                <div class="relative w-full md:w-96">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="search-input" onkeyup="filterPlaces()" placeholder="Buscar por nome, bairro ou especialidade..." class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+                    <div id="geo-status" class="geo-status is-info">
+                        <i class="fa-solid fa-satellite-dish"></i>
+                        <span id="geo-text">Clique no botão para detectar sua localização e atualizar distâncias.</span>
+                        <button id="gps-btn" type="button">Usar meu GPS</button>
+                    </div>
                 </div>
 
-                <!-- Filters -->
-                <div class="flex flex-wrap gap-2 w-full md:w-auto">
-                    <button onclick="setCategory('all')" class="filter-btn active bg-brand-600 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition">Todos</button>
-                    <button onclick="setCategory('hospital')"
-  
+                <div class="hero-panel">
+                    <div class="panel-card highlight">
+                        <span class="label">Atendimento</span>
+                        <strong>24h</strong>
+                        <small>UPAs e urgências</small>
+                    </div>
+                    <div class="panel-card">
+                        <span class="label">Unidades</span>
+                        <strong>+120</strong>
+                        <small>Serviços disponíveis</small>
+                    </div>
+                    <div class="panel-card">
+                        <span class="label">Acesso</span>
+                        <strong>Rápido</strong>
+                        <small>Localização inteligente</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container services-grid">
+                <article class="service-card">
+                    <div class="icon-box blue"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3>Localização inteligente</h3>
+                    <p>Descubra unidades próximas com distância estimada, rota e acesso mais rápido.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="icon-box green"><i class="fa-solid fa-stethoscope"></i></div>
+                    <h3>Atendimento humano</h3>
+                    <p>Encontre cuidados adequados ao seu caso com orientação clara e segura.</p>
+                </article>
+
+                <article class="service-card">
+                    <div class="icon-box orange"><i class="fa-solid fa-shield-heart"></i></div>
+                    <h3>Prevenção e acolhimento</h3>
+                    <p>Serviços de rotina, prevenção e apoio comunitário em uma experiência acolhedora.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="unidades" class="container section-block">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow dark">Unidades de saúde</span>
+                    <h3>Encontre o atendimento mais próximo</h3>
+                </div>
+            </div>
+
+            <div class="toolbar-panel">
+                <div class="search-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="search-input" type="text" placeholder="Buscar por nome, bairro ou especialidade...">
+                </div>
+
+                <div class="filter-group" aria-label="Filtros de categorias">
+                    <button class="filter-btn active" data-category="all" type="button">Todos</button>
+                    <button class="filter-btn" data-category="hospital" type="button">Hospitais</button>
+                    <button class="filter-btn" data-category="upa" type="button">UPAs</button>
+                    <button class="filter-btn" data-category="ubs" type="button">UBS</button>
+                </div>
+            </div>
+
+            <div id="places-grid" class="places-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="triagem" class="container section-block triage-block">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow dark">Triagem rápida</span>
+                    <h3>Identifique sinais importantes</h3>
+                </div>
+            </div>
+
+            <div class="triage-grid">
+                <button class="symptom-btn" type="button" data-symptom="Dor de cabeça intensa">Dor de cabeça intensa</button>
+                <button class="symptom-btn" type="button" data-symptom="Febre alta e cansaço">Febre alta e cansaço</button>
+                <button class="symptom-btn" type="button" data-symptom="Dificuldade para respirar">Dificuldade para respirar</button>
+                <button class="symptom-btn" type="button" data-symptom="Dor forte no peito">Dor forte no peito</button>
+                <button class="symptom-btn" type="button" data-symptom="Vômitos persistentes">Vômitos persistentes</button>
+                <button class="symptom-btn" type="button" data-symptom="Dor abdominal forte">Dor abdominal forte</button>
+            </div>
+
+            <div id="triage-result" class="triage-result" aria-live="polite">
+                <strong>Selecione um sintoma</strong>
+                <p>Explore as opções acima para receber orientações rápidas sobre a gravidade e o tipo de atendimento mais adequado.</p>
+            </div>
+        </section>
+
+        <section id="emergencias" class="container section-block emergency-block">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow dark">Emergências</span>
+                    <h3>Atendimento imediato e orientações essenciais</h3>
+                </div>
+            </div>
+
+            <div class="emergency-grid">
+                <div class="emergency-card danger">
+                    <div class="emergency-icon"><i class="fa-solid fa-ambulance"></i></div>
+                    <div>
+                        <span>Emergência</span>
+                        <strong>192</strong>
+                        <p>Central de atendimento de urgência.</p>
+                    </div>
+                </div>
+
+                <div class="emergency-card">
+                    <div class="emergency-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                    <div>
+                        <span>Atendimento</span>
+                        <strong>0800 123 456</strong>
+                        <p>Orientação médica e informações gerais.</p>
+                    </div>
+                </div>
+
+                <div class="emergency-card">
+                    <div class="emergency-icon"><i class="fa-solid fa-hospital-user"></i></div>
+                    <div>
+                        <span>Urgência</span>
+                        <strong>Pronto-socorro</strong>
+                        <p>Procure atendimento imediato em caso de risco à vida.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 Saúde para Todos — acesso rápido à saúde da comunidade.</p>
+            <a href="#top">Voltar ao topo</a>
+        </div>
+    </footer>
+
+    <script src="Index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a
+          
