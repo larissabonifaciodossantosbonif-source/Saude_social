@@ -1,0 +1,119 @@
+const healthPlaces = [
+    {
+        id: 1,
+        name: "Hospital Central de Urgência",
+        type: "hospital",
+        categoryName: "Hospital Geral",
+        address: "Av. Principal, 1000 - Centro",
+        lat: -23.55052,
+        lng: -46.633308,
+        phone: "(11) 3300-0000",
+        status: "Aberto 24 horas",
+        statusClass: "text-emerald-600 bg-emerald-50",
+        specialties: ["Pronto-Socorro", "UTI", "Pediatria", "Ortopedia"],
+        distance: null
+    },
+    {
+        id: 2,
+        name: "UPA 24h - Unidade de Pronto Atendimento",
+        type: "upa",
+        categoryName: "UPA 24h",
+        address: "Rua das Flores, 450 - Bairro Novo",
+        lat: -23.55800,
+        lng: -46.640000,
+        phone: "(11) 3300-1111",
+        status: "Aberto 24 horas",
+        statusClass: "text-emerald-600 bg-emerald-50",
+        specialties: ["Clínica Geral", "Suturas", "Exames Rápidos"],
+        distance: null
+    },
+    {
+        id: 3,
+        name: "UBS São José - Posto de Saúde",
+        type: "ubs",
+        categoryName: "Posto de Saúde (UBS)",
+        address: "Praça da Comunidade, 12 - Jardim Sol",
+        lat: -23.54200,
+        lng: -46.620000,
+        phone: "(11) 3300-2222",
+        status: "Aberto • Fecha às 17h",
+        statusClass: "text-amber-600 bg-amber-50",
+        specialties: ["Vacinação", "Consultas de Rotina", "Dentista"],
+        distance: null
+    }
+];
+
+let currentCategory = 'all';
+let userCoords = null;
+
+function renderPlaces(places) {
+    const grid = document.getElementById('places-grid');
+    grid.innerHTML = '';
+
+    if (places.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 font-semibold">Nenhuma unidade encontrada.</div>`;
+        return;
+    }
+
+    places.forEach(place => {
+        const distText = place.distance !== null ? `${place.distance.toFixed(1)} km de você` : 'Distância não calculada';
+        const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}`;
+
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl p-6 border border-slate-100 shadow-md hover:shadow-xl transition flex flex-col justify-between space-y-4";
+        
+        card.innerHTML = `
+            <div class="space-y-3">
+                <div class="flex justify-between items-start">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-brand-600 bg-brand-50 px-3 py-1 rounded-full">${place.categoryName}</span>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full ${place.statusClass}">${place.status}</span>
+                </div>
+                <h4 class="font-extrabold text-xl text-brand-900">${place.name}</h4>
+                <p class="text-xs text-slate-500 flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-500"></i> ${place.address}</p>
+                <p class="text-xs font-bold text-brand-600 flex items-center gap-1.5"><i class="fa-solid fa-route"></i> ${distText}</p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center gap-2">
+                <a href="${mapUrl}" target="_blank" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-3 px-4 rounded-xl text-center transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-diamond-turn-right"></i> Como Chegar
+                </a>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function setCategory(category) {
+    currentCategory = category;
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-600', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+    });
+    event.target.classList.remove('bg-slate-100', 'text-slate-600');
+    event.target.classList.add('bg-brand-600', 'text-white');
+    filterPlaces();
+}
+
+function filterPlaces() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const filtered = healthPlaces.filter(place => {
+        const matchesCat = currentCategory === 'all' || place.type === currentCategory;
+        const matchesQuery = place.name.toLowerCase().includes(query) || place.address.toLowerCase().includes(query);
+        return matchesCat && matchesQuery;
+    });
+    renderPlaces(filtered);
+}
+
+function getUserLocation() {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(position => {
+            userCoords = { lat: position.coords.latitude, lng: position.coords.longitude };
+            healthPlaces.forEach(place => {
+                place.distance = Math.sqrt(Math.pow(place.lat - userCoords.lat, 2) + Math.pow(place.lng - userCoords.lng, 2)) * 111; // Aproximação rápida em km
+            });
+            filterPlaces();
+        });
+    }
+}
+
+renderPlaces(healthPlaces);
+      
