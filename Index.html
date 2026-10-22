@@ -1,208 +1,236 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saúde para Todos</title>
-    <meta name="description" content="Sistema de localização e triagem de saúde para encontrar serviços próximos de você.">
+    <meta
+      name="description"
+      content="Sistema social para encontrar unidades de saúde próximas ao endereço da pessoa."
+    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="Index.css.">
-</head>
-<body>
+    <link rel="stylesheet" href="Index.css." />
+  </head>
+  <body>
     <header class="site-header">
-        <div class="container header-inner">
-            <div class="brand-wrap">
-                <div class="brand-icon">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                </div>
-                <div>
-                    <h1>Saúde <span>para Todos</span></h1>
-                    <p>Sistema Unificado de Localização</p>
-                </div>
-            </div>
-
-            <nav class="menu-desktop">
-                <a href="#unidades">Unidades</a>
-                <a href="#triagem">Triagem</a>
-                <a href="#emergencias">Emergências</a>
-            </nav>
-
-            <a href="#emergencias" class="emergency-btn">
-                <i class="fa-solid fa-phone-volume"></i>
-                <span>Emergência 192</span>
-            </a>
+      <div class="container header-inner">
+        <div class="brand-wrap">
+          <div class="brand-icon">
+            <i class="fa-solid fa-heart-pulse"></i>
+          </div>
+          <div>
+            <h1>Saúde <span>para Todos</span></h1>
+            <p>Sistema de atendimento social</p>
+          </div>
         </div>
+
+        <nav class="menu-desktop">
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#unidades">Unidades</a>
+          <a href="#triagem">Triagem</a>
+          <a href="#emergencias">Emergências</a>
+        </nav>
+
+        <a href="#emergencias" class="emergency-btn">
+          <i class="fa-solid fa-phone-volume"></i>
+          <span>Emergência 192</span>
+        </a>
+      </div>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container hero-inner">
-                <div class="hero-copy">
-                    <span class="eyebrow">
-                        <i class="fa-solid fa-location-dot"></i>
-                        Geolocalização ativa
-                    </span>
-                    <h2>Cuidados de saúde com rapidez, confiança e proximidade.</h2>
-                    <p>
-                        Encontre hospitais, UPAs, postos de saúde e serviços comunitários em tempo real.
-                        Tenha acesso rápido às unidades mais próximas e orientações importantes para a sua situação.
-                    </p>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow">
+              <i class="fa-solid fa-location-dot"></i>
+              Localização inteligente
+            </span>
+            <h2>Encontre atendimento próximo de você com rapidez e acolhimento.</h2>
+            <p>
+              Ajudamos pessoas a localizar hospitais, UPAs, postos de saúde e serviços sociais
+              mais próximos do endereço informado, com orientação clara e apoio imediato.
+            </p>
 
-                    <div class="hero-actions">
-                        <a href="#unidades" class="btn-primary">Ver unidades</a>
-                        <a href="#triagem" class="btn-secondary">Triagem rápida</a>
-                    </div>
-
-                    <div id="geo-status" class="geo-status is-info">
-                        <i class="fa-solid fa-satellite-dish"></i>
-                        <span id="geo-text">Clique no botão para detectar sua localização e atualizar distâncias.</span>
-                        <button id="gps-btn" type="button">Usar meu GPS</button>
-                    </div>
-                </div>
-
-                <div class="hero-panel">
-                    <div class="panel-card highlight">
-                        <span class="label">Atendimento</span>
-                        <strong>24h</strong>
-                        <small>UPAs e urgências</small>
-                    </div>
-                    <div class="panel-card">
-                        <span class="label">Unidades</span>
-                        <strong>+120</strong>
-                        <small>Serviços disponíveis</small>
-                    </div>
-                    <div class="panel-card">
-                        <span class="label">Acesso</span>
-                        <strong>Rápido</strong>
-                        <small>Localização inteligente</small>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="services">
-            <div class="container services-grid">
-                <article class="service-card">
-                    <div class="icon-box blue"><i class="fa-solid fa-map-location-dot"></i></div>
-                    <h3>Localização inteligente</h3>
-                    <p>Descubra unidades próximas com distância estimada, rota e acesso mais rápido.</p>
-                </article>
-
-                <article class="service-card">
-                    <div class="icon-box green"><i class="fa-solid fa-stethoscope"></i></div>
-                    <h3>Atendimento humano</h3>
-                    <p>Encontre cuidados adequados ao seu caso com orientação clara e segura.</p>
-                </article>
-
-                <article class="service-card">
-                    <div class="icon-box orange"><i class="fa-solid fa-shield-heart"></i></div>
-                    <h3>Prevenção e acolhimento</h3>
-                    <p>Serviços de rotina, prevenção e apoio comunitário em uma experiência acolhedora.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="unidades" class="container section-block">
-            <div class="section-heading">
-                <div>
-                    <span class="eyebrow dark">Unidades de saúde</span>
-                    <h3>Encontre o atendimento mais próximo</h3>
-                </div>
+            <div class="hero-actions">
+              <a href="#unidades" class="btn-primary">Buscar unidades</a>
+              <a href="#triagem" class="btn-secondary">Triagem rápida</a>
             </div>
 
-            <div class="toolbar-panel">
-                <div class="search-wrap">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input id="search-input" type="text" placeholder="Buscar por nome, bairro ou especialidade...">
-                </div>
-
-                <div class="filter-group" aria-label="Filtros de categorias">
-                    <button class="filter-btn active" data-category="all" type="button">Todos</button>
-                    <button class="filter-btn" data-category="hospital" type="button">Hospitais</button>
-                    <button class="filter-btn" data-category="upa" type="button">UPAs</button>
-                    <button class="filter-btn" data-category="ubs" type="button">UBS</button>
-                </div>
+            <div id="geo-status" class="geo-status is-info">
+              <i class="fa-solid fa-satellite-dish"></i>
+              <span id="geo-text">Ative o GPS ou informe seu endereço para localizar os serviços mais próximos.</span>
+              <button id="gps-btn" type="button">Usar meu GPS</button>
             </div>
+          </div>
 
-            <div id="places-grid" class="places-grid" aria-live="polite"></div>
-        </section>
-
-        <section id="triagem" class="container section-block triage-block">
-            <div class="section-heading">
-                <div>
-                    <span class="eyebrow dark">Triagem rápida</span>
-                    <h3>Identifique sinais importantes</h3>
-                </div>
+          <div class="hero-panel">
+            <div class="panel-card highlight">
+              <span class="label">Acesso</span>
+              <strong>Rápido</strong>
+              <small>Busca por endereço e localização</small>
             </div>
-
-            <div class="triage-grid">
-                <button class="symptom-btn" type="button" data-symptom="Dor de cabeça intensa">Dor de cabeça intensa</button>
-                <button class="symptom-btn" type="button" data-symptom="Febre alta e cansaço">Febre alta e cansaço</button>
-                <button class="symptom-btn" type="button" data-symptom="Dificuldade para respirar">Dificuldade para respirar</button>
-                <button class="symptom-btn" type="button" data-symptom="Dor forte no peito">Dor forte no peito</button>
-                <button class="symptom-btn" type="button" data-symptom="Vômitos persistentes">Vômitos persistentes</button>
-                <button class="symptom-btn" type="button" data-symptom="Dor abdominal forte">Dor abdominal forte</button>
+            <div class="panel-card">
+              <span class="label">Atendimento</span>
+              <strong>24h</strong>
+              <small>UPAs e urgências</small>
             </div>
-
-            <div id="triage-result" class="triage-result" aria-live="polite">
-                <strong>Selecione um sintoma</strong>
-                <p>Explore as opções acima para receber orientações rápidas sobre a gravidade e o tipo de atendimento mais adequado.</p>
+            <div class="panel-card">
+              <span class="label">Unidades</span>
+              <strong>+120</strong>
+              <small>Serviços cadastrados</small>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="emergencias" class="container section-block emergency-block">
-            <div class="section-heading">
-                <div>
-                    <span class="eyebrow dark">Emergências</span>
-                    <h3>Atendimento imediato e orientações essenciais</h3>
-                </div>
+      <section id="como-funciona" class="container section-block">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">Como funciona</span>
+            <h3>Uma ferramenta simples e útil para a comunidade</h3>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <div class="icon-box blue"><i class="fa-solid fa-map-marked-alt"></i></div>
+            <h4>1. Informe o endereço</h4>
+            <p>Digite seu bairro, rua ou use o GPS para localizar a sua região.</p>
+          </article>
+
+          <article class="info-card">
+            <div class="icon-box green"><i class="fa-solid fa-filter"></i></div>
+            <h4>2. Filtre por tipo</h4>
+            <p>Escolha hospitais, UPAs ou postos de saúde conforme a sua necessidade.</p>
+          </article>
+
+          <article class="info-card">
+            <div class="icon-box orange"><i class="fa-solid fa-heart-circle-check"></i></div>
+            <h4>3. Acesse o atendimento</h4>
+            <p>Veja os mais próximos, distância, telefone e como chegar facilmente.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="unidades" class="container section-block">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">Unidades de saúde</span>
+            <h3>Encontre o atendimento mais próximo</h3>
+          </div>
+        </div>
+
+        <div class="search-panel">
+          <div class="search-wrap">
+            <i class="fa-solid fa-location-crosshairs"></i>
+            <input
+              id="address-input"
+              type="text"
+              placeholder="Digite seu endereço, bairro ou rua..."
+            />
+          </div>
+
+          <button id="address-btn" class="search-btn" type="button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Buscar local
+          </button>
+        </div>
+
+        <div class="toolbar-panel">
+          <div class="filter-group" aria-label="Filtros de categorias">
+            <button class="filter-btn active" data-category="all" type="button">Todos</button>
+            <button class="filter-btn" data-category="hospital" type="button">Hospitais</button>
+            <button class="filter-btn" data-category="upa" type="button">UPAs</button>
+            <button class="filter-btn" data-category="ubs" type="button">UBS</button>
+          </div>
+        </div>
+
+        <div id="places-grid" class="places-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="triagem" class="container section-block triage-block">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">Triagem rápida</span>
+            <h3>Identifique sinais importantes</h3>
+          </div>
+        </div>
+
+        <div class="triage-grid">
+          <button class="symptom-btn" type="button" data-symptom="Dor de cabeça intensa">Dor de cabeça intensa</button>
+          <button class="symptom-btn" type="button" data-symptom="Febre alta e cansaço">Febre alta e cansaço</button>
+          <button class="symptom-btn" type="button" data-symptom="Dificuldade para respirar">Dificuldade para respirar</button>
+          <button class="symptom-btn" type="button" data-symptom="Dor forte no peito">Dor forte no peito</button>
+          <button class="symptom-btn" type="button" data-symptom="Vômitos persistentes">Vômitos persistentes</button>
+          <button class="symptom-btn" type="button" data-symptom="Dor abdominal forte">Dor abdominal forte</button>
+        </div>
+
+        <div id="triage-result" class="triage-result" aria-live="polite">
+          <strong>Selecione um sintoma</strong>
+          <p>Explore as opções acima para receber orientações rápidas sobre a gravidade e o tipo de atendimento mais adequado.</p>
+        </div>
+      </section>
+
+      <section id="emergencias" class="container section-block emergency-block">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow dark">Emergências</span>
+            <h3>Atendimento imediato e orientações essenciais</h3>
+          </div>
+        </div>
+
+        <div class="emergency-grid">
+          <div class="emergency-card danger">
+            <div class="emergency-icon"><i class="fa-solid fa-ambulance"></i></div>
+            <div>
+              <span>Emergência</span>
+              <strong>192</strong>
+              <p>Central de atendimento de urgência.</p>
             </div>
+          </div>
 
-            <div class="emergency-grid">
-                <div class="emergency-card danger">
-                    <div class="emergency-icon"><i class="fa-solid fa-ambulance"></i></div>
-                    <div>
-                        <span>Emergência</span>
-                        <strong>192</strong>
-                        <p>Central de atendimento de urgência.</p>
-                    </div>
-                </div>
-
-                <div class="emergency-card">
-                    <div class="emergency-icon"><i class="fa-solid fa-phone-volume"></i></div>
-                    <div>
-                        <span>Atendimento</span>
-                        <strong>0800 123 456</strong>
-                        <p>Orientação médica e informações gerais.</p>
-                    </div>
-                </div>
-
-                <div class="emergency-card">
-                    <div class="emergency-icon"><i class="fa-solid fa-hospital-user"></i></div>
-                    <div>
-                        <span>Urgência</span>
-                        <strong>Pronto-socorro</strong>
-                        <p>Procure atendimento imediato em caso de risco à vida.</p>
-                    </div>
-                </div>
+          <div class="emergency-card">
+            <div class="emergency-icon"><i class="fa-solid fa-phone-volume"></i></div>
+            <div>
+              <span>Atendimento</span>
+              <strong>0800 123 456</strong>
+              <p>Orientação médica e informações gerais.</p>
             </div>
-        </section>
+          </div>
+
+          <div class="emergency-card">
+            <div class="emergency-icon"><i class="fa-solid fa-hospital-user"></i></div>
+            <div>
+              <span>Urgência</span>
+              <strong>Pronto-socorro</strong>
+              <p>Procure atendimento imediato em caso de risco à vida.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>© 2026 Saúde para Todos — acesso rápido à saúde da comunidade.</p>
-            <a href="#top">Voltar ao topo</a>
-        </div>
+      <div class="container footer-inner">
+        <p>© 2026 Saúde para Todos — acesso rápido à saúde da comunidade.</p>
+        <a href="#top">Voltar ao topo</a>
+      </div>
     </footer>
 
     <script src="Index.js"></script>
-</body>
+  </body>
 </html>
 
 
@@ -332,91 +360,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-a
-          
